@@ -55,8 +55,8 @@ def add_record(request):
         if request.method=="POST":
             if form.is_valid():
                 add_record=form.save()
-                messages.success(request,"Record Added")
-                return redirect('home')
+                # messages.success(request,"Record succesfully Added")
+                return redirect('add_record')
         return render(request,'add_record.html',{'form':form})
     else:
         messages.success(request, "You must log in")

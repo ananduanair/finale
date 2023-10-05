@@ -13,6 +13,7 @@ class Record(models.Model):
     address=models.CharField(max_length=100)
     state=models.CharField(max_length=50)
     hobbies=models.CharField(max_length=50,blank=True)
+    date_of_birth=models.DateField(null=True)
     DEPARTMENT_CHOICES = [
         ('Science', 'Science'),
         ('Commerce', 'Commerce'),

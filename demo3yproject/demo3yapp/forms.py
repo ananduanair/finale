@@ -53,9 +53,17 @@ class AddRecordForm(forms.ModelForm):
 
     email=forms.EmailField(required=True,widget=forms.widgets.TextInput(attrs={"placeholder":"Email","class":"form-control"}),label="")
     # phone=forms.IntegerField(required=True,widget=forms.widgets.TextInput(attrs={"placeholder":"Phone","class":"form-control"}),label="")
+    date_of_birth = forms.DateField(
+        label='Date of Birth',
+        widget=forms.widgets.DateInput(attrs={'type': 'date'}),
+        required=True,
 
-    phone = forms.IntegerField(widget=forms.NumberInput(attrs={'placeholder': 'Enter phone number','style':'width:300px;''margin-left:10px;'}),required=True)
-    address = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Enter your address','rows':3,'cols':40}),required=True)
+    )
+
+    phone = forms.IntegerField(widget=forms.NumberInput(attrs={'placeholder': 'Enter phone number','style':'width:604px;''margin-right:10px;'}),required=True,label="")
+    # phone= forms.IntegerField(label="", widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Email'}))
+    # address = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder": "Enter your Address", "class": "form-control",'rows':3,'cols':40}), label="")
+    address = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Enter your address',"class":"form-control",'rows':3,'cols':40}),required=True,label="")
     state=forms.CharField(required=True,widget=forms.widgets.TextInput(attrs={"placeholder":"State","class":"form-control"}),label="")
     from django import forms
 
@@ -64,6 +72,7 @@ class AddRecordForm(forms.ModelForm):
             ('', 'Select Department'),  # Empty choice
             ('science', 'Science'),
             ('commerce', 'Commerce'),
+
         ]
 
         COURSES_CHOICES = [
@@ -75,15 +84,19 @@ class AddRecordForm(forms.ModelForm):
         ]
 
         department = forms.ChoiceField(
+
             label='Department',
             choices=DEPARTMENT_CHOICES,
             required=False,  # You can set it to True if needed
+
+
         )
 
         courses = forms.ChoiceField(
             label='Courses',
             choices=COURSES_CHOICES,
             required=False,
+
         )
     class Meta:
         model=Record
